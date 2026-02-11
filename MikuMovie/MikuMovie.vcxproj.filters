@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\Window">
+      <UniqueIdentifier>{8f102ad5-a2de-4915-93bb-66e364fd2141}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\DirectX12">
+      <UniqueIdentifier>{d6b79653-dffc-4010-8c4e-4b5a4330fd47}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MikuMovie.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Window\Window.cpp">
+      <Filter>ソース ファイル\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX12\Device.cpp">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX12\DXGI.cpp">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX12\CommandList.cpp">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX12\CommandQueue.cpp">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX12\CommandAllocator.cpp">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX12\SwapChain.cpp">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX12\DescriptorHeap.cpp">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX12\RenderTarget.cpp">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX12\Fence.cpp">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX12\DrawData.cpp">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX12\CompileShader.cpp">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX12\PiPlineState.cpp">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX12\RootSignature.cpp">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Window\Window.h">
+      <Filter>ソース ファイル\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX12\Device.h">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX12\DXGI.h">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX12\CommandList.h">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX12\CommandQueue.h">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX12\CommandAllocator.h">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX12\SwapChain.h">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX12\DescriptorHeap.h">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX12\RenderTarget.h">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX12\Fence.h">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX12\DrawData.h">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX12\CompileShader.h">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX12\PiPlineState.h">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX12\RootSignature.h">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

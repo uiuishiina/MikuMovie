@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36908.2 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MikuMovie", "MikuMovie\MikuMovie.vcxproj", "{987B88AB-62CE-4AAC-8F29-AB0724B7E605}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{987B88AB-62CE-4AAC-8F29-AB0724B7E605}.Debug|x64.ActiveCfg = Debug|x64
+		{987B88AB-62CE-4AAC-8F29-AB0724B7E605}.Debug|x64.Build.0 = Debug|x64
+		{987B88AB-62CE-4AAC-8F29-AB0724B7E605}.Debug|x86.ActiveCfg = Debug|Win32
+		{987B88AB-62CE-4AAC-8F29-AB0724B7E605}.Debug|x86.Build.0 = Debug|Win32
+		{987B88AB-62CE-4AAC-8F29-AB0724B7E605}.Release|x64.ActiveCfg = Release|x64
+		{987B88AB-62CE-4AAC-8F29-AB0724B7E605}.Release|x64.Build.0 = Release|x64
+		{987B88AB-62CE-4AAC-8F29-AB0724B7E605}.Release|x86.ActiveCfg = Release|Win32
+		{987B88AB-62CE-4AAC-8F29-AB0724B7E605}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CBACE0E4-BECE-432A-A373-1624F585F7D8}
+	EndGlobalSection
+EndGlobal
