@@ -11,11 +11,11 @@
         return false;
     }
 
-   // 頂点レイアウト
-   // 頂点バッファのフォーマットに合わせて設定する
+    // 頂点レイアウト
+    // 頂点バッファのフォーマットに合わせて設定する
     D3D12_INPUT_ELEMENT_DESC inputElementDescs[] = {
-        {"POSITION", 0,    DXGI_FORMAT_R32G32B32_FLOAT, 0,  0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0},
-        {   "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0},
+        {   "POSITION", 0,    DXGI_FORMAT_R32G32B32_FLOAT, 0,  0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0},
+        {   "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0},
     };
     // ラスタライザステート
     // ポリゴンの塗りつぶし方法や裏面カリングの設定を行う

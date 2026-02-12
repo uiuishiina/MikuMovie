@@ -1,20 +1,6 @@
 
-struct VSInput
+//’¸“_ˆÊ’u
+float4 VS(float4 pos : POSITION, float2 uv : TEXCOORD) : SV_Position
 {
-    float3 pos : POSITION;
-    float4 color : COLOR;
-};
-
-struct VSOutput
-{
-    float4 pos : SV_POSITION;
-    float4 color : COLOR;
-};
-
-VSOutput VS(VSInput input)
-{
-    VSOutput output;
-    output.pos = float4(input.pos, 1.0f);
-    output.color = input.color;
-    return output;
+    return pos;
 }

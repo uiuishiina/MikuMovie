@@ -1,4 +1,4 @@
-
+ 
 #include"DrawData.h"
 #include<cassert>
 #include <DirectXMath.h>
@@ -6,7 +6,7 @@
 namespace {
     struct Vertex {
         DirectX::XMFLOAT3 position;
-        DirectX::XMFLOAT4 color;
+        DirectX::XMFLOAT2 uv;
     };
 }
 
@@ -32,16 +32,17 @@ void DrawData::Draw(const CommandList& List)const noexcept {
     // プリミティブ形状の設定（三角形）
     List.Get()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
     // 描画コマンド
-    List.Get()->DrawIndexedInstanced(3, 1, 0, 0, 0);
+    List.Get()->DrawIndexedInstanced(6, 1, 0, 0, 0);
 }
 
 //@brief	頂点作成関数
 [[nodiscard]] bool DrawData::CreateVex()noexcept {
     // 今回利用する三角形の頂点データ
     Vertex triangleVertices[] = {
-        {  {0.0f, 0.5f, 0.0f}, {1.0f, 0.0f, 0.0f, 1.0f}}, // 上頂点（赤色）
-        { {0.5f, -0.5f, 0.0f}, {0.0f, 1.0f, 0.0f, 1.0f}}, // 右下頂点（緑色）
-        {{-0.5f, -0.5f, 0.0f}, {0.0f, 0.0f, 1.0f, 1.0f}}  // 左下頂点（青色）
+        {   {-1.0f, 1.0f, 0.0f},   {-1.0f, 1.0f}},
+        {   {1.0f, 1.0f, 0.0f},    {1.0f, 1.0f}},
+        {   {-1.0f, -1.0f, 0.0f},  {-1.0f, -1.0f}},
+        {   {1.0f, -1.0f, 0.0f}, { 1.0f, -1.0f}}
     };
     // 頂点データのサイズ
     const auto vertexBufferSize = sizeof(triangleVertices);
@@ -98,7 +99,7 @@ void DrawData::Draw(const CommandList& List)const noexcept {
 //@brief	インデクス作成関数
 [[nodiscard]] bool DrawData::CreateInd()noexcept {
     uint16_t triangleIndices[] = {
-       0, 1, 2  // 三角形を構成する頂点のインデックス
+       0, 1, 2, 1, 3, 2 // 三角形を構成する頂点のインデックス
     };
     // インデックスデータのサイズ
     const auto indexBufferSize = sizeof(triangleIndices);
