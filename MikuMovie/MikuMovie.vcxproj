@@ -103,10 +103,12 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>B:\Visual Studio\DirectXTex-main\DirectXTex-main\DirectXTex</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>B:\Visual Studio\DirectXTex-main\DirectXTex-main\DirectXTex\Bin\Desktop_2022\x64\Debug</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -137,6 +139,7 @@
     <ClCompile Include="DirectX12\RenderTarget.cpp" />
     <ClCompile Include="DirectX12\RootSignature.cpp" />
     <ClCompile Include="DirectX12\SwapChain.cpp" />
+    <ClCompile Include="DirectX12\Texture.cpp" />
     <ClCompile Include="MikuMovie.cpp" />
     <ClCompile Include="Window\Window.cpp" />
   </ItemGroup>
@@ -154,6 +157,7 @@
     <ClInclude Include="DirectX12\RenderTarget.h" />
     <ClInclude Include="DirectX12\RootSignature.h" />
     <ClInclude Include="DirectX12\SwapChain.h" />
+    <ClInclude Include="DirectX12\Texture.h" />
     <ClInclude Include="Window\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

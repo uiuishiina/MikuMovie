@@ -2,6 +2,7 @@
 #include"PiPlineState.h"
 #include<cassert>
 
+
 //@brief	パイプラインステート作成関数
 [[nodiscard]] bool PiPlineState::Create(const RootSignature& rootSignature)noexcept {
     if (!Vs_.Create("Shader/VertexShader.hlsl", "VS","vs_5_0")) {

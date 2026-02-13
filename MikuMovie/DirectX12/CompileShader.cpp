@@ -14,7 +14,7 @@
     // シェーダのコンパイルエラーなどが分かる様にする
     ID3DBlob* error{};
 
-    auto res = D3DCompileFromFile(temp.data(), nullptr, nullptr, entry.c_str(), Version.c_str(), D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION, 0, &Shader_, &error);
+    auto res = D3DCompileFromFile(temp.data(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, entry.c_str(), Version.c_str(), D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION, 0, &Shader_, &error);
     if (FAILED(res)) {
         char* p = static_cast<char*>(error->GetBufferPointer());
         assert(false && "シェーダのコンパイルに失敗しました");

@@ -12,6 +12,7 @@
 #include"DirectX12/DrawData.h"
 #include"DirectX12/RootSignature.h"
 #include"DirectX12/PiPlineState.h"
+#include"DirectX12/Texture.h"
 
 
 class MikuMovie {
@@ -48,11 +49,15 @@ public:
 			return false;
 		}
 		//ディスクリプタヒープ作成
-		if (!Heap_.Create(D3D12_DESCRIPTOR_HEAP_TYPE_RTV, Swap_.GetDesc().BufferCount)) {
+		if (!TargetHeap_.Create(D3D12_DESCRIPTOR_HEAP_TYPE_RTV, Swap_.GetDesc().BufferCount)) {
+			return false;
+		}
+		//テクスチャ用
+		if (!TexHeap_.Create(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, 1,true)) {
 			return false;
 		}
 		//レンダーターゲット作成
-		if (!Target_.Create(Swap_, Heap_)) {
+		if (!Target_.Create(Swap_, TargetHeap_)) {
 			return false;
 		}
 		//フェンス作成
@@ -69,6 +74,9 @@ public:
 		}
 		//パイプライン作成
 		if (!PiPline_.Create(Root_)) {
+			return false;
+		}
+		if (!Texture_.Create(TexHeap_)) {
 			return false;
 		}
 
@@ -95,7 +103,7 @@ public:
 			List_.Get()->ResourceBarrier(1, &pToRT);
 
 			// レンダーターゲットの設定
-			D3D12_CPU_DESCRIPTOR_HANDLE handles[] = { Target_.GetHandle(Heap_, backBufferIndex) };
+			D3D12_CPU_DESCRIPTOR_HANDLE handles[] = { Target_.GetHandle(TargetHeap_, backBufferIndex) };
 			List_.Get()->OMSetRenderTargets(1, handles, false, nullptr);
 
 			// レンダーターゲットのクリア
@@ -125,6 +133,10 @@ public:
 				scissorRect.right = w;
 				scissorRect.bottom = h;
 				List_.Get()->RSSetScissorRects(1, &scissorRect);
+
+				ID3D12DescriptorHeap* p[] = { TexHeap_.Get() };
+				List_.Get()->SetDescriptorHeaps(1, p);
+				List_.Get()->SetGraphicsRootDescriptorTable(0, TexHeap_.Get()->GetGPUDescriptorHandleForHeapStart());
 
 				Data_.Draw(List_);
 			}
@@ -168,11 +180,13 @@ private:
 	CommandAllocator	Allocator_[2]{};
 	CommandList			List_{};
 	SwapChain			Swap_{};
-	DescriptorHeap		Heap_{};
+	DescriptorHeap		TargetHeap_{};//レンダーターゲット用
+	DescriptorHeap		TexHeap_{};//テクスチャ用
 	RenderTarget		Target_{};
 	DrawData			Data_{};
 	RootSignature		Root_{};
 	PiPlineState		PiPline_{};
+	Texture				Texture_{};
 
 	Fence				Fence_{};
 	UINT64				FrameValue_[2]{};
