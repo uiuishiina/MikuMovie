@@ -12,7 +12,7 @@
 	DirectX::TexMetadata metadata_{};
 	DirectX::ScratchImage image_{};
 	{
-		const auto hr = DirectX::LoadFromWICFile(L"Data/test.jpg", DirectX::WIC_FLAGS::WIC_FLAGS_NONE, &metadata_, image_);
+		const auto hr = DirectX::LoadFromWICFile(L"Data/Icon.png", DirectX::WIC_FLAGS::WIC_FLAGS_NONE, &metadata_, image_);
 		if (FAILED(hr)) {
 			assert(false && "テクスチャデータ作成失敗");
 			return false;
@@ -47,6 +47,14 @@
 			nullptr,
 			IID_PPV_ARGS(&TexData_)
 		);
+	}
+	{
+		const DirectX::Image* img = image_.GetImage(0, 0, 0);
+		const auto hr= TexData_->WriteToSubresource(0,
+			nullptr,
+			img->pixels,
+			img->rowPitch,
+			img->slicePitch);
 	}
 
 	D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc = {};

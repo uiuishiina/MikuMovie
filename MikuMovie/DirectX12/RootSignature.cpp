@@ -12,7 +12,7 @@
 
     D3D12_ROOT_PARAMETER rootparam[1] = {};
     rootparam[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
-    rootparam[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+    rootparam[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
     rootparam[0].DescriptorTable.pDescriptorRanges = &textureDescriptorRange;
     rootparam[0].DescriptorTable.NumDescriptorRanges = 1;
 
@@ -24,7 +24,7 @@
     samplerDesc.Filter = D3D12_FILTER_MAXIMUM_MIN_MAG_MIP_LINEAR;
     samplerDesc.MaxLOD = D3D12_FLOAT32_MAX;
     samplerDesc.MinLOD = 0.0f;
-    samplerDesc.ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+    samplerDesc.ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
     samplerDesc.ComparisonFunc = D3D12_COMPARISON_FUNC_NEVER;
     samplerDesc.RegisterSpace = 0;
 	

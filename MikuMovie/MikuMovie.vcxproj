@@ -103,12 +103,12 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>B:\Visual Studio\DirectXTex-main\DirectXTex-main\DirectXTex</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>B:\Visual Studio\MikuMovie\MikuMovie\AddFiles\DirectXTex-main\DirectXTex</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>B:\Visual Studio\DirectXTex-main\DirectXTex-main\DirectXTex\Bin\Desktop_2022\x64\Debug</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>B:\Visual Studio\MikuMovie\MikuMovie\AddFiles\DirectXTex-main\DirectXTex\Bin\Desktop_2022\x64\Debug</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

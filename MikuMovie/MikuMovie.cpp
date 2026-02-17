@@ -79,6 +79,10 @@ public:
 		if (!Texture_.Create(TexHeap_)) {
 			return false;
 		}
+		else {
+			List_.Reset(Allocator_[0]);
+
+		}
 
 		return true;
 	}
