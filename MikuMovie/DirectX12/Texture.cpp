@@ -12,7 +12,7 @@
 	DirectX::TexMetadata metadata_{};
 	DirectX::ScratchImage image_{};
 	{
-		const auto hr = DirectX::LoadFromWICFile(L"Data/Icon.png", DirectX::WIC_FLAGS::WIC_FLAGS_NONE, &metadata_, image_);
+		const auto hr = DirectX::LoadFromWICFile(L"Data/test.jpg", DirectX::WIC_FLAGS::WIC_FLAGS_NONE, &metadata_, image_);
 		if (FAILED(hr)) {
 			assert(false && "テクスチャデータ作成失敗");
 			return false;

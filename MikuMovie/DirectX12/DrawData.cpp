@@ -39,10 +39,10 @@ void DrawData::Draw(const CommandList& List)const noexcept {
 [[nodiscard]] bool DrawData::CreateVex()noexcept {
     // 今回利用する三角形の頂点データ
     Vertex triangleVertices[] = {
-        {   {-1.0f, 1.0f, 0.0f},   {-1.0f, 1.0f}},
-        {   {1.0f, 1.0f, 0.0f},    {1.0f, 1.0f}},
-        {   {-1.0f, -1.0f, 0.0f},  {-1.0f, -1.0f}},
-        {   {1.0f, -1.0f, 0.0f}, { 1.0f, -1.0f}}
+        {   {-1.0f, 1.0f, 0.0f},    {0.0f, 0.0f}},
+        {   {1.0f, 1.0f, 0.0f},     {1.0f, 0.0f}},
+        {   {-1.0f, -1.0f, 0.0f},   {0.0f, 1.0f}},
+        {   {1.0f, -1.0f, 0.0f},    { 1.0f, 1.0f}}
     };
     // 頂点データのサイズ
     const auto vertexBufferSize = sizeof(triangleVertices);
