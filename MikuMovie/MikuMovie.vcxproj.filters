@@ -69,6 +69,9 @@
     <ClCompile Include="DirectX12\Texture.cpp">
       <Filter>ソース ファイル\DirectX12</Filter>
     </ClCompile>
+    <ClCompile Include="DirectX12\ConstantBuffer.cpp">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window\Window.h">
@@ -114,6 +117,9 @@
       <Filter>ソース ファイル\DirectX12</Filter>
     </ClInclude>
     <ClInclude Include="DirectX12\Texture.h">
+      <Filter>ソース ファイル\DirectX12</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX12\ConstantBuffer.h">
       <Filter>ソース ファイル\DirectX12</Filter>
     </ClInclude>
   </ItemGroup>

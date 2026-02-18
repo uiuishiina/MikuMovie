@@ -8,13 +8,26 @@
     textureDescriptorRange.NumDescriptors = 1;
     textureDescriptorRange.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;
     textureDescriptorRange.BaseShaderRegister = 0;
+    textureDescriptorRange.RegisterSpace = 0;
     textureDescriptorRange.OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;
 
-    D3D12_ROOT_PARAMETER rootparam[1] = {};
+    D3D12_DESCRIPTOR_RANGE constantBufferDescriptorRange = {};
+    constantBufferDescriptorRange.NumDescriptors = 1;
+    constantBufferDescriptorRange.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_CBV;
+    constantBufferDescriptorRange.BaseShaderRegister = 0;
+    constantBufferDescriptorRange.RegisterSpace = 0;
+    constantBufferDescriptorRange.OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;
+
+    D3D12_ROOT_PARAMETER rootparam[2] = {};
     rootparam[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
-    rootparam[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
+    rootparam[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
     rootparam[0].DescriptorTable.pDescriptorRanges = &textureDescriptorRange;
     rootparam[0].DescriptorTable.NumDescriptorRanges = 1;
+
+    rootparam[1].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
+    rootparam[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_VERTEX;
+    rootparam[1].DescriptorTable.pDescriptorRanges = &constantBufferDescriptorRange;
+    rootparam[1].DescriptorTable.NumDescriptorRanges = 1;
 
     D3D12_STATIC_SAMPLER_DESC samplerDesc = {};
     samplerDesc.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
@@ -29,7 +42,7 @@
     samplerDesc.RegisterSpace = 0;
 	
     D3D12_ROOT_SIGNATURE_DESC rootSignatureDesc{};
-    rootSignatureDesc.NumParameters = 1;
+    rootSignatureDesc.NumParameters = 2;
     rootSignatureDesc.pParameters = rootparam;
     rootSignatureDesc.NumStaticSamplers = 1;
     rootSignatureDesc.pStaticSamplers = &samplerDesc;

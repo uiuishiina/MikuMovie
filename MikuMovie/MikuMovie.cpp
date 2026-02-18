@@ -13,6 +13,7 @@
 #include"DirectX12/RootSignature.h"
 #include"DirectX12/PiPlineState.h"
 #include"DirectX12/Texture.h"
+#include"DirectX12/ConstantBuffer.h"
 
 
 class MikuMovie {
@@ -53,9 +54,13 @@ public:
 			return false;
 		}
 		//テクスチャ用
-		if (!TexHeap_.Create(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, 1,true)) {
+		if (!TexHeap_.Create(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, 2,true)) {
 			return false;
 		}
+		////コンスタントバッファ用
+		//if (!ConstHeap_.Create(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV,1,true)) {
+		//	return false;
+		//}
 		//レンダーターゲット作成
 		if (!Target_.Create(Swap_, TargetHeap_)) {
 			return false;
@@ -81,7 +86,9 @@ public:
 		}
 		else {
 			List_.Reset(Allocator_[0]);
-
+		}
+		if (!ConstBuffer_.Create(TexHeap_)) {
+			return false;
 		}
 
 		return true;
@@ -97,10 +104,13 @@ public:
 				Fence_.Wait(FrameValue_[backBufferIndex]);
 			}
 
-			// コマンドアロケータリセット
-			Allocator_[backBufferIndex].Reset();
-			// コマンドリストリセット
-			List_.Reset(Allocator_[backBufferIndex]);
+			if (NextValue_ != 1) {
+				// コマンドアロケータリセット
+				Allocator_[backBufferIndex].Reset();
+				// コマンドリストリセット
+				List_.Reset(Allocator_[backBufferIndex]);
+			}
+			
 
 			// リソースバリアでレンダーターゲットを Present から RenderTarget へ変更
 			auto pToRT = Barrier(Target_.Get(backBufferIndex), D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET);
@@ -141,6 +151,11 @@ public:
 				ID3D12DescriptorHeap* p[] = { TexHeap_.Get() };
 				List_.Get()->SetDescriptorHeaps(1, p);
 				List_.Get()->SetGraphicsRootDescriptorTable(0, TexHeap_.Get()->GetGPUDescriptorHandleForHeapStart());
+				
+				auto heapHandle = TexHeap_.Get()->GetGPUDescriptorHandleForHeapStart();
+				heapHandle.ptr += Device::Instance().GetDevice()->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
+				
+				List_.Get()->SetGraphicsRootDescriptorTable(1, heapHandle);
 
 				Data_.Draw(List_);
 			}
@@ -186,11 +201,13 @@ private:
 	SwapChain			Swap_{};
 	DescriptorHeap		TargetHeap_{};//レンダーターゲット用
 	DescriptorHeap		TexHeap_{};//テクスチャ用
+	DescriptorHeap		ConstHeap_{};//コンスタントバッファ用
 	RenderTarget		Target_{};
 	DrawData			Data_{};
 	RootSignature		Root_{};
 	PiPlineState		PiPline_{};
 	Texture				Texture_{};
+	ConstantBuffer		ConstBuffer_{};
 
 	Fence				Fence_{};
 	UINT64				FrameValue_[2]{};

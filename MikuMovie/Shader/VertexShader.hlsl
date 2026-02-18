@@ -8,11 +8,15 @@ struct Output
     float4 pos : SV_POSITION;
     float2 uv : TEXCOORD;
 };
+cbuffer cbuff0 : register(b0)
+{
+    matrix mat;
+};
 //’¸“_ˆÊ’u
 Output VS(float4 pos : POSITION, float2 uv : TEXCOORD)
 {
     Output output;
-    output.pos = pos;
+    output.pos = mul(mat, pos);
     output.uv = uv;
     return output;
 }
